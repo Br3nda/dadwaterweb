@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ <script>
+
+function master_action(action) {
+    $('#result').append('<li>sending ' + action + ' request</li>'); //add bullet point to user feedback
+    $.ajax({
+	url: "/api/master/"+action,
+	data: {
+      
+	},
+	method: 'post',
+	success: function( data ) {
+	  $( "#result" ).append('<li>request complete</li>');
+	}
+    });
+}
+
+</script>
+</head>
+<body>
+  <button onclick="master_action('on');">On</button>
+  <button onclick="master_action('off');">Off</button>
+  
+  <ol id="result"></ol>
+</body>
+</html>
